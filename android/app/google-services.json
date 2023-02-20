@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "307775769061",
+    "project_id": "autionappforostad",
+    "storage_bucket": "autionappforostad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:307775769061:android:88bd3dc250d3a4dbc1470c",
+        "android_client_info": {
+          "package_name": "com.example.auction_app_for_ostad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "307775769061-0ircb144i1q56952oat5k3foarum7rho.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.auction_app_for_ostad",
+            "certificate_hash": "c5ad9b3bb252da8488da8167477bfaae6d456ee5"
+          }
+        },
+        {
+          "client_id": "307775769061-8u9gp1io3agdauc9itnsg390c7sursjr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMLoOoTXd2FXZMBJUbvZI-RTeqQHayzzI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "307775769061-2prj0ib0t70cbn439shakbd741fi79pc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
