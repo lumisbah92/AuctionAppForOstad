@@ -79,7 +79,7 @@ class _LoginInState extends State<LoginIn> {
             height: 50,
             minWidth: 100,
             color: Colors.red,
-            child: const Text('Google Signin',style: TextStyle(color: Colors.white),),
+            child: const Text('With Google Signin',style: TextStyle(color: Colors.white),),
           )
         ),
       ),
