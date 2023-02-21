@@ -4,13 +4,6 @@ A new Flutter project for Ostad.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+In Step 1 I use two pakeges
+import 'package:flutter/material.dart'; // for material design
+import 'package:google_sign_in/google_sign_in.dart'; // for sign in with google
