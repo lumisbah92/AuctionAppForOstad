@@ -1,3 +1,4 @@
+import 'package:auction_app_for_ostad/Product_Details.dart';
 import 'package:auction_app_for_ostad/add_product.dart';
 import 'package:auction_app_for_ostad/product.dart';
 import 'package:auction_app_for_ostad/update_product.dart';
@@ -68,61 +69,82 @@ class Gallary extends StatelessWidget {
         textAlign: TextAlign.center,
       ),
     )
-        : ListView.builder(
-      itemCount: products.length,
-      itemBuilder: (context, index) => Card(
-        color: products[index].price < 33
-            ? Colors.red.shade100
-            : products[index].price < 65
-            ? Colors.yellow.shade100
-            : Colors.green.shade100,
-        child: ListTile(
-          title: Text(products[index].name),
-          subtitle: Text('Description: ${products[index].description}'),
-          leading: CircleAvatar(
-            radius: 25,
-            child: Text('${products[index].price}'),
-          ),
-          trailing: SizedBox(
-            width: 60,
-            child: Row(
-              children: [
-                InkWell(
-                  child: Icon(
-                    Icons.edit,
-                    color: Colors.black.withOpacity(0.75),
+        : GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        crossAxisSpacing: 11,
+        mainAxisSpacing: 11,
+    ), itemBuilder: (context, index){
+          return Container(
+            child: InkWell(
+              onTap: (){
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => Product_Details(products[index].name, products[index].price,),
                   ),
-                  onTap: () {
-                    //
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              UpdateProduct(product: products[index]),
-                        ));
-                    //
-                  },
-                ),
-                InkWell(
-                  child: const Icon(Icons.delete),
-                  onTap: () {
-                    //
-                    _reference.doc(products[index].id).delete();
-                    // To refresh
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Gallary(),
-                        ));
+                );
+              },
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 0, right: 0, top: 2, bottom: 0),
+                    child: CircleAvatar(
+                        radius: 27,
+                        backgroundColor: Color(0xADAD907E),
+                        child: Container(
 
-                    //
-                  },
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+                        )
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20.0, right: 0, top: 0, bottom: 0),
+                    child: ListTile(
+                      title: Text(products[index].name),
+                      subtitle: Text("\$ ${products[index].price}"),
+                      /*trailing: SizedBox(
+                  width: 250,
+                  child: Row(
+                  children: [
+                    InkWell(
+                      child: Icon(
+                        Icons.edit,
+                        color: Colors.black.withOpacity(0.75),
+                      ),
+                      onTap: () {
+                        //
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  UpdateProduct(product: products[index]),
+                            ));
+                        //
+                      },
+                    ),
+                    InkWell(
+                      child: const Icon(Icons.delete),
+                      onTap: () {
+                        //
+                        _reference.doc(products[index].id).delete();
+                        // To refresh
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Gallary(),
+                            ));
+
+                        //
+                      },
+                    ),
+                  ],
+                  ),
+                ),*/
+                    ),
+                  )
+                ],
+              ),
+            )
+          );
+    }, itemCount: products.length);
   }
 }
