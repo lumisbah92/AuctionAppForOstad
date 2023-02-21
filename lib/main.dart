@@ -1,7 +1,11 @@
+import 'package:auction_app_for_ostad/Gallary.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -39,31 +43,7 @@ class _LoginInState extends State<LoginIn> {
       body: Container(
         child: _isLoggedIn
             ? Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-              Image.network(_userObj.photoUrl!),
-              const SizedBox(height: 20,),
-              Text(_userObj.displayName!),
-              const SizedBox(height: 20,),
-              Text(_userObj.email),
-              const SizedBox(height: 20,),
-              MaterialButton(
-                onPressed: () {
-                  _googleSignIn.signOut().then((value) {
-                    setState(() {
-                      _isLoggedIn = false;
-                    });
-                  }).catchError((e) {});
-                },
-                height: 50,
-                minWidth: 100,
-                color: Colors.red,
-                child: const Text('Logout',style: TextStyle(color: Colors.white),),
-              )
-          ],
-        ),
+        child: Gallary(),
         ) : Center(
           child: MaterialButton(
             onPressed: () {
