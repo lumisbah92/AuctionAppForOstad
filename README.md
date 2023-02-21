@@ -2,7 +2,7 @@
 
 A new Flutter project for Ostad.
 
-## Step 1, I use two pakeges:
+## Step 1, I use two packages:
 
 import 'package:flutter/material.dart'; // for material design
 
