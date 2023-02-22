@@ -1,20 +1,70 @@
 import 'package:auction_app_for_ostad/Product_Details.dart';
+import 'package:auction_app_for_ostad/Profile.dart';
 import 'package:auction_app_for_ostad/add_product.dart';
 import 'package:auction_app_for_ostad/product.dart';
 import 'package:auction_app_for_ostad/update_product.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
-class Gallary extends StatelessWidget {
+class Gallary extends StatefulWidget {
+  late GoogleSignInAccount userObj;
+  Gallary({required this.userObj});
+
+  @override
+  State<Gallary> createState() => _GallaryState();
+}
+
+class _GallaryState extends State<Gallary> {
   final CollectionReference _reference =
   FirebaseFirestore.instance.collection('products');
-
+  int myIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Product Gallary'),
           centerTitle: true,
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+            onTap: (index) {
+              setState(() {
+                myIndex=index;
+              });
+              if(index==0) {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => Gallary(userObj: widget.userObj,),
+                  ),
+                );
+              }
+              else if(index==1) {
+
+              }
+              else if(index==2) {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => Profile(userObj: widget.userObj),
+                  ),
+                );
+              }
+            },
+            currentIndex: myIndex,
+            backgroundColor: Color(0xADAFABA9),
+            items: const[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.image),
+                label: 'Gallary',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.perm_identity),
+                label: 'My Posted Item',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'profile',
+              ),
+            ]
         ),
         body: FutureBuilder<QuerySnapshot>(
           future: _reference.get(),
@@ -53,7 +103,7 @@ class Gallary extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const AddProduct(),
+                  builder: (context) => AddProduct(userObj: widget.userObj,),
                 ));
             //
           }),

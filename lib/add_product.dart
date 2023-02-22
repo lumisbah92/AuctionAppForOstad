@@ -4,9 +4,11 @@ import 'package:auction_app_for_ostad/Gallary.dart';
 import 'package:auction_app_for_ostad/product.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AddProduct extends StatefulWidget {
-  const AddProduct({super.key});
+  late GoogleSignInAccount userObj;
+  AddProduct({super.key, required this.userObj});
 
   @override
   State<AddProduct> createState() => _AddProductState();
@@ -99,7 +101,7 @@ class _AddProductState extends State<AddProduct> {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
-          builder: (context) => Gallary(),
+          builder: (context) => Gallary(userObj: widget.userObj,),
         ),
         (route) => false,
       );

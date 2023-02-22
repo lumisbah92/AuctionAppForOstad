@@ -21,7 +21,7 @@ class _Product_DetailsState extends State<Product_Details> {
   List<bidItem>? filterData;
 
   onsortColum(int columnIndex, bool ascending) {
-    if (columnIndex == 0) {
+    if (columnIndex == 1) {
       if (ascending) {
         filterData!.sort((a, b) => a.bidPrice!.compareTo(b.bidPrice!));
       } else {
@@ -170,7 +170,7 @@ class _Product_DetailsState extends State<Product_Details> {
                   data: ThemeData.light()
                       .copyWith(cardColor: Theme.of(context).canvasColor),
                   child: PaginatedDataTable(
-                    sortColumnIndex: 0,
+                    sortColumnIndex: 1,
                     sortAscending: sort,
                     source: RowSource(
                       myData: myData,

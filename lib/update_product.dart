@@ -4,6 +4,7 @@ import 'package:auction_app_for_ostad/Gallary.dart';
 import 'package:auction_app_for_ostad/product.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class UpdateProduct extends StatelessWidget {
   final Product product;
@@ -15,7 +16,9 @@ class UpdateProduct extends StatelessWidget {
 
   final FocusNode focusNode = FocusNode();
 
-  UpdateProduct({super.key, required this.product});
+  late GoogleSignInAccount userObj;
+
+  UpdateProduct({super.key, required this.product, required this.userObj});
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +61,7 @@ class UpdateProduct extends StatelessWidget {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Gallary(),
+                              builder: (context) => Gallary(userObj: userObj,),
                             ));
                       });
                       //

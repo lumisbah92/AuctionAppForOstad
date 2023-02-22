@@ -43,7 +43,7 @@ class _LoginInState extends State<LoginIn> {
       body: Container(
         child: _isLoggedIn
             ? Center(
-        child: Gallary(),
+        child: Gallary(userObj: _userObj,),
         ) : Center(
           child: MaterialButton(
             onPressed: () {
